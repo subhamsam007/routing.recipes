@@ -1,11 +1,11 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import { useForm } from 'react-hook-form'
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
+import { RecipeesContext } from '../context/RecipesContext';
 
 
 const Create = () => {
-    const [newRecipes ,setnewRecipes] = useState([])
+        const { recipeData, setrecipeData } = useContext(RecipeesContext)
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = ( userdata) => {
@@ -13,7 +13,7 @@ const Create = () => {
         // const copyData = [...newRecipes]
         // copyData.push(userdata)
         // setnewRecipes(copyData)
-        setnewRecipes([...newRecipes,userdata])
+         setrecipeData([...recipeData, userdata]); 
 
         console.log(userdata);
         reset();
