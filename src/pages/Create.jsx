@@ -1,40 +1,74 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
+import { nanoid } from 'nanoid';
+import { useState } from 'react';
+
 
 const Create = () => {
-  return (
-    <div className='bg-amber-300 p-4 h-9/10 w-full rounded-3xl '>
-        <form className=' flex  flex-col space-y-10' >
+    const [newRecipes ,setnewRecipes] = useState([])
+    const { register, handleSubmit, reset } = useForm();
 
-            <label className="font-semibold">
-                Recipe Name:
-                <input
-                    type="text"
-                    name="name"
-                    className="block mt-1 p-2 rounded border"
-                    placeholder="Enter recipe name"
-                    required
-                />
-            </label>
-            <label className="font-semibold">
-                Image Link:
-                <input
-                    type="url"
-                    name="image"
-                    className="block mt-1 p-2 rounded border"
-                    placeholder="Enter image URL"
-                    required
-                />
-            </label>
-            <button
-                type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-red-500"
-            >
-                Create Recipe
-            </button>
-        </form>
-      
-    </div>
-  )
-}
+    const onSubmit = ( userdata) => {
+        userdata.id = nanoid();
+        // const copyData = [...newRecipes]
+        // copyData.push(userdata)
+        // setnewRecipes(copyData)
+        setnewRecipes([...newRecipes,userdata])
 
-export default Create
+        console.log(userdata);
+        reset();
+    };
+
+    return (
+        <div className='bg-amber-300 p-4 h-9/10 w-full rounded-3xl '>
+            <form className='flex flex-col space-y-10' onSubmit={handleSubmit(onSubmit)}>
+                <label className="font-semibold">
+                    Recipe Name:
+                    <input
+                        type="text"
+                        name="name"
+                        className="block mt-1 p-2 rounded border w-full"
+                        placeholder="Enter recipe name"
+                        required
+                        {...register('name')}
+                    />
+                </label>
+                <label className="font-semibold">
+                    Image Link:
+                    <input
+                        type="url"
+                        name="image"
+                        className="block mt-1 p-2 rounded border w-full"
+                        placeholder="Enter image URL"
+                        required
+                        {...register('image')}
+                    />
+                </label>
+                <label className="font-semibold">
+                    Recipe Type:
+                    <select
+                        name="type"
+                        className="block mt-1 p-2 rounded border w-full"
+                        required
+                        {...register('type')}
+                    >
+                        <option value="">Select type</option>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="dessert">Dessert</option>
+                        <option value="snack">Snack</option>
+                    </select>
+                </label>
+                <button
+                    type="submit"
+                    className="bg-blue-500 text-white px-4 py-2 rounded-xl w-2/5 hover:bg-red-500"
+                >
+                    Create Recipe
+                </button>
+            </form>
+        </div>
+    );
+};
+
+export default Create;
