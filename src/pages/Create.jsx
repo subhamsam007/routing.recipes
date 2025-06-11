@@ -1,27 +1,22 @@
-import React,{useContext} from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
-import { nanoid } from 'nanoid';
-import { RecipeesContext } from '../context/RecipesContext';
-
+import { nanoid } from 'nanoid'
+import { RecipeesContext } from '../context/RecipesContext'
 
 const Create = () => {
-        const { recipeData, setrecipeData } = useContext(RecipeesContext)
-    const { register, handleSubmit, reset } = useForm();
-
-    const onSubmit = ( userdata) => {
-        userdata.id = nanoid();
-        // const copyData = [...newRecipes]
-        // copyData.push(userdata)
-        // setnewRecipes(copyData)
-         setrecipeData([...recipeData, userdata]); 
-
-        console.log(userdata);
-        reset();
-    };
+    const { recipeData, setrecipeData } = useContext(RecipeesContext);
+    const {register, handleSubmit, reset} = useForm();
+    
+    const submitHandler = (userData) => {
+        userData.id = nanoid();
+        console.log(userData)
+        setrecipeData([...recipeData, userData])
+        reset();     
+    }
 
     return (
         <div className='bg-amber-300 p-4 h-9/10 w-full rounded-3xl '>
-            <form className='flex flex-col space-y-10' onSubmit={handleSubmit(onSubmit)}>
+            <form className='flex flex-col space-y-10' onSubmit={handleSubmit(submitHandler)}>
                 <label className="font-semibold">
                     Recipe Name:
                     <input
@@ -30,7 +25,7 @@ const Create = () => {
                         className="block mt-1 p-2 rounded border w-full"
                         placeholder="Enter recipe name"
                         required
-                        {...register('name')}
+                        {...register("name")}
                     />
                 </label>
                 <label className="font-semibold">
@@ -50,7 +45,7 @@ const Create = () => {
                         name="type"
                         className="block mt-1 p-2 rounded border w-full"
                         required
-                        {...register('type')}
+                        {...register('catagory')}
                     >
                         <option value="">Select type</option>
                         <option value="breakfast">Breakfast</option>
