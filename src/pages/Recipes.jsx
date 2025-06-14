@@ -6,7 +6,7 @@ const Recipes = () => {
   const { recipeData } = useContext(RecipeesContext);
   const renderRecipes = recipeData.map((info) => <RcepieCard key={info.id} recipe={info}/>);
   return (
-    <div className="bg-amber-300 p-4 h-9/10 w-full space-x-7 rounded-3xl flex flex-wrap overflow-hidden">
+    <div className="bg-amber-300 p-6 h-full w-full space-x-7 rounded-3xl flex flex-wrap ">
       {renderRecipes}
     </div>
   );
