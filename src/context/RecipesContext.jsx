@@ -23,25 +23,25 @@ const RecipesContext = (props) => {
           "Bake in the preheated oven for 12-15 minutes or until the crust is golden brown.",
           "Slice and serve hot."
         ],
-        "prepTimeMinutes": 20,
-        "cookTimeMinutes": 15,
-        "servings": 4,
-        "difficulty": "Easy",
-        "cuisine": "Italian",
-        "caloriesPerServing": 300,
-        "tags": [
-          "Pizza",
-          "Italian"
-        ],
-        "userId": 166,
+        // "prepTimeMinutes": 20,
+        // "cookTimeMinutes": 15,
+        // "servings": 4,
+        // "difficulty": "Easy",
+        // "cuisine": "Italian",
+        // "caloriesPerServing": 300,
+        // "tags": [
+        //   "Pizza",
+        //   "Italian"
+        // ],
+        // "userId": 166,
         "image": "https://cdn.dummyjson.com/recipe-images/1.webp",
-        "rating": 4.6,
-        "reviewCount": 98,
+        // "rating": 4.6,
+        // "reviewCount": 98,
         "catagory": "Dinner",
         "description": "A classic Italian pizza with tomato sauce, mozzarella cheese, and fresh basil leaves."
       },
       
-    ])
+    ] || [])
   return (
     <RecipeesContext.Provider value={{recipeData , setrecipeData}}>
       {props.children}
