@@ -23,7 +23,7 @@ const Create = () => {
             difficulty: userData.difficulty || 'Easy',
             // cuisine: userData.cuisine || 'General',
             // caloriesPerServing: parseInt(userData.caloriesPerServing) || 0,
-            tags: userData.tags.split(',').map(tag => tag.trim()),
+            // tags: userData.tags.split(',').map(tag => tag.trim()),
             // userId: 166, // You might want to make this dynamic based on logged-in user
             image: userData.image,
             // rating: 0,
