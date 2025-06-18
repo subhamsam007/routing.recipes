@@ -41,7 +41,7 @@ const RecipesContext = (props) => {
         "description": "A classic Italian pizza with tomato sauce, mozzarella cheese, and fresh basil leaves."
       },
       
-    ] || [])
+    ] )
   return (
     <RecipeesContext.Provider value={{recipeData , setrecipeData}}>
       {props.children}
